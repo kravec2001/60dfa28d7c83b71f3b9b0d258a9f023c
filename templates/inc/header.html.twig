@@ -13,7 +13,8 @@
                 {% endif %}
             </div>
             <a class="blog-header-logo d-flex align-items-center text-decoration-none text-first"
-               href="{{ is_granted('ROLE_USER') ? path('user_dashboard') : is_granted('ROLE_ADMIN') ? path('admin_dashboard') : path('app_logout') }}">
+               href="#">
+{#               href="{{ is_granted('ROLE_USER') ? path('user_dashboard') : is_granted('ROLE_ADMIN') ? path('admin_dashboard') : path('app_logout') }}">#}
                 <object type="image/svg+xml"
                         data="{{ asset('img/min-logo.png') }}"
                         width="64x"

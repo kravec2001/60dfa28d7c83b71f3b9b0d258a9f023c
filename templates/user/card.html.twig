@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block substylesheets %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+          xmlns="http://www.w3.org/1999/html">
+    <style>
+        .usercard {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+/*            max-width: 300px;*/
+            margin: auto;
+            text-align: center;
+            font-family: arial;
+        }
+
+        .usertitle {
+            color: grey;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        .usertitlepost {
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        * {box-sizing: border-box}
+
+        .container1 {
+            width: 100%;
+            background-color: #ddd;
+        }
+
+        .skills1 {
+            text-align: right;
+            padding-right: 20px;
+            line-height: 40px;
+            color: white;
+        }
+
+    </style>
+
+{% endblock %}
+
+{% block body %}
+    <hr width="100%" align="left" size="5">
+    <div class="row mb-2">
+        <div class="col-md-3">
+            <div class="usercard">
+                <p style="color: white; background: #747F8B">{{ app.user.psbUser.fio }}</p>
+                <img src="/img/users/{{ app.user.psbUser.img }}" style="width:80%">
+                <p class="usertitle">{{ app.user.psbUser.depart.name }}</p>
+                <p class="usertitlepost">{{ app.user.psbUser.post.name }}</p>
+                <div class="d-flex" style="margin-left: 24px;">
+                    <a href="#"><i class="fa fa-phone"> </i></a>
+                    <span style="margin-left: 5px">{{ app.user.psbUser.phone }}</span>
+                </div>
+                <div class="d-flex" style="margin-left: 24px; margin-bottom: 10px">
+                    <a href="#"><i class="fa fa-envelope-open"> </i></a>
+                    <span style="margin-left: 5px; margin-bottom: 20px">{{ app.user.psbUser.email }}</span>
+                </div>
+{#                <p style="color: #747F8B; background: #747F8B">-</p>#}
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="usercard">
+                <p style="color: #fff; background: #747F8B">Руководитель</p>
+                <div class="row mb-2">
+                    <div class="col-md-2">
+                        <img src="/img/users/{{ manager.img }}" style="width:80px; higth:80px ">
+                    </div>
+                    <div class="col-md-7">
+                        <div class="d-flex">
+                            <h6 class="mb-0 mt-0">{{ manager.fio }}</h6>
+                        </div>
+                        <div class="d-flex">
+                            <small class="mb-1">
+                                <span class="text-muted">{{ manager.depart.name }}</span> <br>
+                            </small>
+                        </div>
+                        <div class="d-flex">
+                            <a><i class="fa fa-phone"> </i></a>
+                            <span style="margin-left: 5px">{{ manager.phone }}</span>
+                        </div>
+                        <div class="d-flex" style="margin-bottom: 10px">
+                            <a><i class="fa fa-envelope-open"> </i></a>
+                            <span style="margin-left: 5px">{{ manager.email }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="usercard p-3">
+                <p style="color: #1c1b7d;"><b>Уровень прохождения плана обучения</b></p>
+                <div class="container1">
+                    {{ (status[0]['cnty'] / (status[0]['cnt']) * 100) // 1 }} %
+                    <div class="skills1 html"
+                         style="width: {{ (status[0]['cnty'] / (status[0]['cnt']) * 100) // 1 }}%; background-color: #4CAF50;">
+                    </div>
+                </div>
+                <div>
+                    <p style="margin-top: 20px;">Выполнено {{ status[0]['cnty'] }} из {{ status[0]['cnt'] }} заданий</p>
+                </div>
+            </div>
+
+{#            <div class="usercard p-3">
+                <p style="color: #1c1b7d;"><b>Ближайшие события</b></p>
+                <div class="d-flex">
+                    <h6 style="color: #1c1b7d; align-content: flex-end">04.12.2021</h6>
+                </div>
+                <div class="d-flex">
+                    <p>{{ events[0]['event'] }} </p>
+                </div>
+                <div class="d-flex">
+                    <h6 style="color: #1c1b7d; align-content: flex-end">05.12.2021</h6>
+                </div>
+                <div class="d-flex">
+                    <p>{{ events[1]['event'] }} </p>
+                </div>
+                <div class="d-flex">
+                    <h6 style="color: #1c1b7d; align-content: flex-end">07.12.2021</h6>
+                </div>
+                <div class="d-flex">
+                    <p>{{ events[2]['event'] }} </p>
+                </div>
+            </div>#}
+
+        </div>
+
+    </div>
+
+{% endblock %}
