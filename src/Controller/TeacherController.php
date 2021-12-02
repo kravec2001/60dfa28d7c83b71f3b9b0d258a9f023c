@@ -16,7 +16,7 @@ class TeacherController extends AbstractController
     /**
      * @Route("/teacher", name="teacher")
      */
-    public function adminMain(): Response
+    public function teacherMain(): Response
     {
         return $this->redirectToRoute('teacher_card');
     }
@@ -24,7 +24,7 @@ class TeacherController extends AbstractController
     /**
      * @Route("/teacher/card", name="teacher_card")
      */
-    public function adminCard(): Response
+    public function teacherCard(): Response
     {
         $this->denyAccessUnlessGranted(Role::TEACHER);
 
@@ -54,7 +54,7 @@ class TeacherController extends AbstractController
             'title' => 'Карта наставника',
             'breadcrumbs' => [
                 [
-                    'url' => $this->generateUrl('admin'),
+                    'url' => $this->generateUrl('teacher'),
                     'name' => 'Кабинет наставника',
                 ],
                 [
