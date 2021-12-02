@@ -12,6 +12,15 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends AbstractController
 {
+
+    /**
+     * @Route("/user", name="user")
+     */
+    public function userMain(): Response
+    {
+        return $this->redirectToRoute('user_card');
+    }
+
     /**
      * @Route("/user/card", name="user_card")
      */
