@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block substylesheets %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+          xmlns="http://www.w3.org/1999/html">
+
+    <link rel="stylesheet" href="{{ asset('css/card.css') }}"/>
+{% endblock %}
+
+{% block body %}
+    <hr width="100%" align="left" size="5">
+    <div class="row mb-2">
+
+        {% for user in users %}
+
+        <div class="col-md-3">
+            <div class="usercard">
+                <p style="color: white; background: #747F8B">{{user.fio }}</p>
+                <img src="/img/users/{{ user.img }}" style="width:80%">
+                <p class="usertitle">{{ user.depart }}</p>
+                <p class="usertitlepost">{{ user.post }}</p>
+                <div class="d-flex" style="margin-left: 24px;">
+                    <a><i class="fa fa-phone text-info"> </i></a>
+                    <span style="margin-left: 5px">{{ user.phone }}</span>
+                </div>
+                <div class="d-flex" style="margin-left: 24px; margin-bottom: 10px">
+                    <a><i class="fa fa-envelope-open text-info"> </i></a>
+                    <span style="margin-left: 5px; margin-bottom: 20px">{{ user.email }}</span>
+                </div>
+{#                <p style="color: #747F8B; background: #747F8B">-</p>#}
+                <hr width="100%" align="left" size="5">
+                <p class="usertitlepost">Уровень прохождения плана обучения</p>
+                <div class="container1">
+                    {{ (user.cnty / (user.cnt) * 100) // 1 }} %
+                    <div class="skills1 html"
+                         style="width: {{ (user.cnty / (user.cnt) * 100) // 1 }}%; background-color: #4CAF50;">
+                    </div>
+                </div>
+                <div>
+                    <p style="margin-top: 20px;">Выполнено {{ user.cnty }} из {{ user.cnt }} заданий</p>
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+
+
+        </div>
+    </div>
+
+{% endblock %}

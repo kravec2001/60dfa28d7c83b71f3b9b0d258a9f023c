@@ -31,7 +31,26 @@ class TeacherController extends AbstractController
         /** @var User $user */
         $user = $this->getUser();
 
-        return $this->render('user/card.html.twig', [
+        $em = $this->get('doctrine')->getManager();
+
+        $query = $em->createQuery(
+            'SELECT p.id, p.fio, p.img, p.phone, p.email, t.name post, d.name depart,
+                    count(1) cnt, sum(e.status) cnty,
+                    (count(1) - sum(e.status)) cntn,
+                     (sum(e.status) / count(1)) prc
+                       FROM App\Entity\PsbUser p, 
+                            App\Entity\PsbPosts t, 
+                            App\Entity\PsbDeparts d,   
+                            App\Entity\PsbEventsPers e             
+                       WHERE p.idTeacher = ' . $user->getId() . '
+                         AND p.idPost = t.idPost
+                         AND p.idDepart = d.id         
+                         AND e.idUser = p.id      
+                         group by p.id, p.fio, p.img, p.phone, p.email, t.name, d.name 
+                       ORDER BY p.idManager, p.fio');
+        $users = $query->getResult();
+
+        return $this->render('teacher/card.html.twig', [
             'title' => 'Карта наставника',
             'breadcrumbs' => [
                 [
@@ -42,6 +61,7 @@ class TeacherController extends AbstractController
                     'name' => 'Карта наставника',
                 ],
             ],
+            'users' => $users,
         ]);
     }
 
