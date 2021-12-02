@@ -58,7 +58,7 @@ class MapController extends AbstractController
             'title' => 'График адаптации',
             'breadcrumbs' => [
                 [
-                    'url' => $this->generateUrl('user_dashboard'),
+                    'url' => $this->generateUrl('user'),
                     'name' => 'Кабинет сотрудника',
                 ],
                 [

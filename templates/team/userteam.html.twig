@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block substylesheets %}
+    <style>
+        .card-grid:hover {
+            box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3) !important;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    {% set i = 0 %}
+    {% if allteam is defined and allteam %}
+
+        <div class="row mb-2">
+
+        {% for all in allteam %}
+
+        {% if i == 1 %}
+            </div>
+            <div class="row mb-2">
+        {% endif %}
+
+        <div class="col-md-6 mb-6">
+               {% set img = all.img %}
+                {% set fio = all.fio %}
+                {% set post = all.post %}
+                {% set depart = all.depart %}
+                {% set phone = all.phone %}
+                {% set email = all.email %}
+            {% include 'team/profile.html.twig' %}
+        </div>
+        {% if i % 2 == 0 %}
+            </div>
+            <div class="row mb-2">
+        {% endif %}
+        {% set i = i + 1 %}
+        {% endfor %}
+    {% endif %}
+
+    </div>
+
+    {% if return == 1 %}
+    <div>
+    <form action="{{ path("user_map") }}" method="post">
+        <button type="submit" id="next" name="save" class="btn btn-success btn-lg"
+                style="display:block; margin:auto">Продолжить</button>
+    </form>
+    </div>
+    {% endif %}
+
+{% endblock %}
