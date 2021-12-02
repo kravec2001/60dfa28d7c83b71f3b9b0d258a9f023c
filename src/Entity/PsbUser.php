@@ -86,6 +86,13 @@ class PsbUser
     private $email;
 
     /**
+     * @var int|null
+     *
+     * @ORM\Column(name="id_teacher", type="integer", nullable=true)
+     */
+    private $idTeacher;
+
+    /**
      * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="psbUser")
      * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
      */
@@ -314,6 +321,22 @@ class PsbUser
     public function setEmail(?string $email): void
     {
         $this->email = $email;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getIdTeacher()
+    {
+        return $this->idTeacher;
+    }
+
+    /**
+     * @param int|null $idTeacher
+     */
+    public function setIdTeacher($idTeacher)
+    {
+        $this->idTeacher = $idTeacher;
     }
 
 

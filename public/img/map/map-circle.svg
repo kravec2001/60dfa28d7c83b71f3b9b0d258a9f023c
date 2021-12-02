@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 160 160">
+	<defs>
+		<symbol id="circle" class="circle" x="0" y="0" width="160" height="160" fill="rgb(100,104,114)"> <!--#3B71CC-->
+			<circle cx="80" cy="5" r="5"/>
+			<circle cx="155" cy="80" r="5"/>
+			<circle cx="80" cy="155" r="5"/>
+			<circle cx="5" cy="80" r="5"/>
+		</symbol>
+	</defs>
+	<g transform="rotate(7.5, 80, 80)">
+		<use x="0" y="0" xlink:href="#circle"/>
+		<use x="0" y="0" transform="rotate(15, 80, 80)" xlink:href="#circle"/>
+		<use x="0" y="0" transform="rotate(30, 80, 80)" xlink:href="#circle"/>
+		<use x="0" y="0" transform="rotate(45, 80, 80)" xlink:href="#circle"/>
+		<use x="0" y="0" transform="rotate(60, 80, 80)" xlink:href="#circle"/>
+		<use x="0" y="0" transform="rotate(75, 80, 80)" xlink:href="#circle"/>
+	</g>
+ </svg>

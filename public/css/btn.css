@@ -77,12 +77,12 @@ a {
 }
 
 .main-menu{
-    background-color: rgb(234,86,20)!important;
+    background-color: #FA4616!important;
 }
 
 .list-group-item-info {
-    color: #fff!important;
-    background-color: rgb(43, 44, 132)!important;
+    color: #30353B!important;
+    background-color: #fff!important;
     padding: 15px 40px;
 }
 .btn-success {
