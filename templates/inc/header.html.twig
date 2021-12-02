@@ -1,0 +1,46 @@
+<header class="blog-header py-3">
+    <div class="row flex-nowrap justify-content-between align-items-center">
+        <div class="col-auto">
+            <div style="float: left; padding-top: 15px">
+                {% if app.user.roles[0] == 'ROLE_USER' %}
+                    {% include 'menu/menu.html.twig' %}
+                {% endif %}
+                {% if app.user.roles[0] == 'ROLE_ADMIN' %}
+                    {% include 'menu/menuadmin.html.twig' %}
+                {% endif %}
+                {% if app.user.roles[0] == 'ROLE_TEACHER' %}
+                    {% include 'menu/menuteacher.html.twig' %}
+                {% endif %}
+            </div>
+            <a class="blog-header-logo d-flex align-items-center text-decoration-none text-first"
+               href="{{ is_granted('ROLE_USER') ? path('user_dashboard') : is_granted('ROLE_ADMIN') ? path('admin_dashboard') : path('app_logout') }}">
+                <object type="image/svg+xml"
+                        data="{{ asset('img/min-logo.png') }}"
+                        width="64x"
+                        height="64px">
+                    <img src="{{ asset('img/min-logo.png') }}"
+                         alt="{{ '0KHQuNGB0YLQtdC80LAg0LDQtNCw0L/RgtCw0YbQuNC4IElU'|base64_decode }}">
+                </object>
+                {{ '0KHQuNGB0YLQtdC80LAg0LDQtNCw0L/RgtCw0YbQuNC4IElU'|base64_decode }}
+                {# <span class="form-label-title-blue">Система адаптации IT</span> #}
+            </a>
+        </div>
+
+        {% if app.user %}
+            {% set img = app.user.psbUser.img %}
+            {% set fio = app.user.psbUser.fio %}
+            {% set post = app.user.psbUser.post.name %}
+            {% set depart = app.user.psbUser.depart.name %}
+        {% else %}
+            {% set img = '' %}
+            {% set fio = 'Незаполнено' %}
+            {% set post = 'Незаполнено' %}
+            {% set depart = 'Незаполнено' %}
+        {% endif %}
+{#        {% include 'inc/username.html.twig' %}#}
+
+         <div class="col-auto d-flex justify-content-end align-items-center">
+            <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_logout') }}">Выйти</a>
+        </div>
+    </div>
+</header>
