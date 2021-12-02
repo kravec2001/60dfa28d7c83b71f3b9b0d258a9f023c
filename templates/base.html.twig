@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{% block title %}Welcome!{% endblock %} </title>
+
+    {% block stylesheets %}
+        <!-- Bootstrap CSS -->
+        {% if app.environment == 'dev' %}
+            <link rel="stylesheet" href="{{ asset('assets/bootstrap-4.6.0-dist/css/bootstrap.css') }}"/>
+        {% else %}
+            <link rel="stylesheet" href="{{ asset('assets/bootstrap-4.6.0-dist/css/bootstrap.min.css') }}"/>
+        {% endif %}
+
+        <link rel="stylesheet" href="{{ asset('css/btn.css') }}"/>
+
+        {% block substylesheets %}{% endblock %}
+    {% endblock %}
+</head>
+<body class="{% block body_class %}d-flex flex-column h-100{% endblock %}">
+<div class="container">
+
+
+    {% if breadcrumbs is defined and breadcrumbs and breadcrumbs|length > 0 %}
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                {% for breadcrumb in breadcrumbs %}
+                    <li class="breadcrumb-item{% if breadcrumb.class is defined and breadcrumb.class %}{{ breadcrumb.class }}{% endif %}">
+                        {% if breadcrumb.url is defined and breadcrumb.url %}
+                            <a href="{{ breadcrumb.url }}">{{ breadcrumb.name }}</a>
+                        {% else %}
+                            <span title="{{ breadcrumb.name }}">{{ breadcrumb.name }}</span>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ol>
+        </nav>
+    {% endif %}
+
+
+    {% block body %}{% endblock %}
+
+</div>
+
+{% block test %}{% endblock %}
+
+{% block javascripts %}
+    {% if app.environment == 'dev' %}
+
+
+    {% else %}
+        {#<script src="{{ asset('assets/jquery-3.6.0-dist/js/jquery.min.js') }}"></script>#}
+{#        <script src="{{ asset('assets/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js') }}"></script>#}
+    {% endif %}
+
+    {% block subjavascripts %}{% endblock %}
+{% endblock %}
+
+</body>
+</html>
