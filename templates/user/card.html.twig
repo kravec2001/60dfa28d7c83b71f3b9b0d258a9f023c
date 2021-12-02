@@ -91,6 +91,33 @@
                 </div>
             </div>
 
+            <div class="usercard">
+                <p style="color: #fff; background: #747F8B">Наставник</p>
+                <div class="row mb-2">
+                    <div class="col-md-2">
+                        <img src="/img/users/{{ teacher.img }}" style="width:80px; higth:80px ">
+                    </div>
+                    <div class="col-md-7">
+                        <div class="d-flex">
+                            <h6 class="mb-0 mt-0">{{ teacher.fio }}</h6>
+                        </div>
+                        <div class="d-flex">
+                            <small class="mb-1">
+                                <span class="text-muted">{{ teacher.depart.name }}</span> <br>
+                            </small>
+                        </div>
+                        <div class="d-flex">
+                            <a><i class="fa fa-phone"> </i></a>
+                            <span style="margin-left: 5px">{{ teacher.phone }}</span>
+                        </div>
+                        <div class="d-flex" style="margin-bottom: 10px">
+                            <a><i class="fa fa-envelope-open"> </i></a>
+                            <span style="margin-left: 5px">{{ teacher.email }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="usercard p-3">
                 <p style="color: #1c1b7d;"><b>Уровень прохождения плана обучения</b></p>
                 <div class="container1">

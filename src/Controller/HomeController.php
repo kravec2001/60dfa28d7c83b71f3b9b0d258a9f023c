@@ -24,7 +24,7 @@ class HomeController extends AbstractController
         }
 
         if ($this->isGranted(Role::USER)) {
-            return $this->redirectToRoute('user_dashboard');
+            return $this->redirectToRoute('user_card');
         }
 
         return $this->redirectToRoute('app_logout');

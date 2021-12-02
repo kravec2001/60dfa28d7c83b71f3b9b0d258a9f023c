@@ -3,14 +3,8 @@
 
 namespace App\Controller;
 
-use App\Entity\PsbTasks;
-use App\Entity\PsbTests;
 use App\Entity\PsbUser;
-use App\Entity\PsbProjects;
-use App\Entity\PsbProjectUsers;
 use App\Entity\Role;
-use App\Form\TestingForm;
-use App\Form\UserProjectForm;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,6 +36,10 @@ class UserController extends AbstractController
             'id' =>  $user->getPsbUser()->getIdManager()
         ]);
 
+        $teacher = $this->getDoctrine()->getRepository( PsbUser::class)->findOneBy([
+            'id' =>  $user->getPsbUser()->getidTeacher()
+        ]);
+
         $em = $this->get('doctrine')->getManager();
         $query = $em->createQuery(
             'SELECT e.event 
@@ -67,6 +65,7 @@ class UserController extends AbstractController
             ],
             'status' => $status,
             'manager' => $manager,
+            'teacher' => $teacher,
             'events' => $events,
         ]);
     }
