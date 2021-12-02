@@ -65,7 +65,7 @@ class UserController extends AbstractController
             'title' => 'Карта сотрудника',
             'breadcrumbs' => [
                 [
-                    'url' => $this->generateUrl('user_dashboard'),
+                    'url' => $this->generateUrl('user'),
                     'name' => 'Кабинет сотрудника',
                 ],
                 [
