@@ -16,11 +16,11 @@ class HomeController extends AbstractController
     {
 
         if ($this->isGranted(Role::ADMIN)) {
-            return $this->redirectToRoute('admin_dashboard');
+            return $this->redirectToRoute('admin');
         }
 
         if ($this->isGranted(Role::TEACHER)) {
-            return $this->redirectToRoute('teacher_dashboard');
+            return $this->redirectToRoute('teacher');
         }
 
         if ($this->isGranted(Role::USER)) {
