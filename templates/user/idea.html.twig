@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block substylesheets %}
+    <style>
+
+        input[type=text], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+
+        input[type=submit] {
+            background-color: darkblue;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #f1a417;
+        }
+
+        .container-idea {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+    </style>
+{% endblock %}
+
+{% block body %}
+    <hr width="100%" align="left" size="5">
+
+    <h3>Добавить идею или предложение</h3>
+
+    <div class="container-idea">
+        <form action="/action_page.php">
+            <label for="country" style="color: #1c1b7d">Тип сообщения</label>
+            <select id="country" name="country">
+                <option value="0">Идея</option>
+                <option value="1">Предложение</option>
+                <option value="2">Вопрос</option>
+                <option value="3">Жалоба</option>
+            </select>
+
+            <label for="fname" style="color: #1c1b7d">Тема</label>
+            <input type="text" id="fname" name="firstname" placeholder="Введите тему..">
+
+
+            <label for="subject" style="color: #1c1b7d">Текст</label>
+            <textarea id="subject" name="subject" placeholder="Введите тескт.." style="height:200px"></textarea>
+
+            <button class="btn btn-lg btn-first" type="submit">Сохранить</button>
+        </form>
+    </div>
+
+
+{% endblock %}

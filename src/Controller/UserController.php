@@ -87,6 +87,25 @@ class UserController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/user/idea", name="user_idea")
+     */
+    public function userIdea(): Response
+    {
+        $this->denyAccessUnlessGranted(Role::USER);
 
+        return $this->render('user/idea.html.twig', [
+            'title' => 'Идеи и предложения',
+            'breadcrumbs' => [
+                [
+                    'url' => $this->generateUrl('user_dashboard'),
+                    'name' => 'Кабинет сотрудника',
+                ],
+                [
+                    'name' => 'Идеи и предложения',
+                ],
+            ],
+        ]);
+    }
 
 }
