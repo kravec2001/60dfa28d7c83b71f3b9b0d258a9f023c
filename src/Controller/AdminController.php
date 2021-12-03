@@ -50,6 +50,22 @@ class AdminController extends AbstractController
                        ORDER BY p.idManager, p.fio');
         $users = $query->getResult();
 
+        $query = $em->createQuery(
+            'SELECT e.event, t.name, (u.dateStart + e.beginDaysAfter) date, e.countDays 
+               FROM App\Entity\PsbEventsPers p,
+                    App\Entity\PsbEvents e,
+                    App\Entity\PsbEventsTypes t, 
+                    App\Entity\PsbUser u
+              WHERE u.idManager = ' . $user->getId() . '                
+                AND p.idEvents = e.id
+                AND p.status = 0
+                AND t.id = e.typEvent
+                AND u.id = p.idUser
+                AND e.doBoss = 1 
+                order by u.dateStart + e.beginDaysAfter 
+               ');
+        $events = $query->getResult();
+
         return $this->render('admin/card.html.twig', [
             'title' => 'Карта руководителя',
             'breadcrumbs' => [
@@ -62,6 +78,7 @@ class AdminController extends AbstractController
                 ],
             ],
             'users' => $users,
+            'events' => $events,
         ]);
     }
 

@@ -29,7 +29,6 @@
                     <a><i class="fa fa-envelope-open text-info"> </i></a>
                     <span style="margin-left: 5px; margin-bottom: 20px">{{ user.email }}</span>
                 </div>
-{#                <p style="color: #747F8B; background: #747F8B">-</p>#}
                 <hr width="100%" align="left" size="5">
                 <p class="usertitlepost">Уровень адаптации</p>
                 <div class="container1">
@@ -46,8 +45,38 @@
         </div>
         {% endfor %}
 
+        <div class="nav-tabs-custom">
+            <p class="usertitlepost">Ближайшие события</p>
+            <div class="tab-content">
+                <div class="tab-pane active" id="timeline">
+                    <ul class="timeline timeline-inverse">
+                        {% set i = 0 %}
+                        {% set dt = '' %}
+                        {% for evn in events %}
+                            {% if i < 11 %}
+                                {% if dt != evn.date|date('d.m.Y') %}
+                                    <li class="time-label">
+                                        <span class="bg-red" style="padding-right: 0;">{{ evn.date|date('d.m.Y') }}</span>
+                                        {#<span class="bg-red">{{ evn.name }}</span>#}
+                                    </li>
+                                {% endif %}
 
+                                <li>
+                                    <div class="timeline-item">
+                                        <div class="timeline-body">
+                                            <span class="dayNumber"></span>
+                                            <div class="timeline-description">{{ evn.event }}</div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                {% set dt = evn.date|date('d.m.Y') %}
+                            {% endif %}
+                            {% set i = i + 1 %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
-
 {% endblock %}

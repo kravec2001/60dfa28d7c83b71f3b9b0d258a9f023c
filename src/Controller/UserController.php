@@ -71,7 +71,7 @@ class UserController extends AbstractController
                 AND p.status = 0
                 AND t.id = e.typEvent
                 AND u.id = p.idUser 
-                order by p.numberOrder
+                order by u.dateStart + e.beginDaysAfter 
                ');
         $events = $query->getResult();
 

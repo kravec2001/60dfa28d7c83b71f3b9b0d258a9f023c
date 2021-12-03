@@ -86,6 +86,12 @@ class PsbEvents
      */
     private $endKolDays;
 
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="do_boss", type="integer", nullable=true)
+     */
+    private $doBoss;
 
     /**
      * @var string|null
@@ -238,6 +244,22 @@ class PsbEvents
     public function setEndKolDays(?int $endKolDays): void
     {
         $this->endKolDays = $endKolDays;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getDoBoss(): ?int
+    {
+        return $this->doBoss;
+    }
+
+    /**
+     * @param int|null $doBoss
+     */
+    public function setDoBoss(?int $doBoss): void
+    {
+        $this->doBoss = $doBoss;
     }
 
 
