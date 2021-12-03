@@ -381,4 +381,48 @@ class UserController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/user/calendar", name="user_calendar")
+     */
+    public function userCalendar(): Response
+    {
+        $this->denyAccessUnlessGranted(Role::USER);
+
+        /** @var User $user */
+        $user = $this->getUser();
+
+        $em = $this->get('doctrine')->getManager();
+
+        $query = $em->createQuery(
+            'SELECT e.event, t.name, (u.dateStart + e.beginDaysAfter) date, e.countDays 
+               FROM App\Entity\PsbEventsPers p,
+                    App\Entity\PsbEvents e,
+                    App\Entity\PsbEventsTypes t, 
+                    App\Entity\PsbUser u
+              WHERE p.idUser = ' . $user->getId() . '                
+                AND p.idEvents = e.id
+                AND p.status = 0
+                AND t.id = e.typEvent
+                AND u.id = p.idUser 
+                AND (u.dateStart + e.beginDaysAfter) - 1 = current_date()
+                order by u.dateStart + e.beginDaysAfter 
+               ');
+        $events = $query->getResult();
+
+
+        return $this->render('user/calendar.html.twig', [
+            'title' => 'Календарь событий',
+            'breadcrumbs' => [
+                [
+                    'url' => $this->generateUrl('user'),
+                    'name' => 'Кабинет сотрудника',
+                ],
+                [
+                    'name' => 'Календарь событий',
+                ],
+            ],
+            'events' => $events,
+        ]);
+    }
+
 }

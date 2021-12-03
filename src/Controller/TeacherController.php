@@ -181,4 +181,49 @@ class TeacherController extends AbstractController
 
     }
 
+    /**
+     * @Route("/teacher/calendar", name="teacher_calendar")
+     */
+    public function userCalendar(): Response
+    {
+        $this->denyAccessUnlessGranted(Role::TEACHER);
+
+        /** @var User $user */
+        $user = $this->getUser();
+
+        $em = $this->get('doctrine')->getManager();
+
+        $query = $em->createQuery(
+            'SELECT e.event, t.name, (u.dateStart + e.beginDaysAfter) date, e.countDays 
+               FROM App\Entity\PsbEventsPers p,
+                    App\Entity\PsbEvents e,
+                    App\Entity\PsbEventsTypes t, 
+                    App\Entity\PsbUser u
+              WHERE u.idTeacher = ' . $user->getId() . '
+                AND p.idEvents = e.id
+                AND p.status = 0
+                AND t.id = e.typEvent
+                AND u.id = p.idUser
+                AND e.doMentor = 1
+                AND (u.dateStart + e.beginDaysAfter) - 1  = current_date()       
+                order by u.dateStart + e.beginDaysAfter                  
+               ');
+        $events = $query->getResult();
+
+
+        return $this->render('teacher/calendar.html.twig', [
+            'title' => 'Календарь событий',
+            'breadcrumbs' => [
+                [
+                    'url' => $this->generateUrl('teacher'),
+                    'name' => 'Кабинет наставника',
+                ],
+                [
+                    'name' => 'Календарь событий',
+                ],
+            ],
+            'events' => $events,
+        ]);
+    }
+
 }
