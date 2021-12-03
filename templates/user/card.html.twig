@@ -125,12 +125,16 @@
                     <div class="tab-pane active" id="timeline">
                         <ul class="timeline timeline-inverse">
                             {% set i = 0 %}
+                            {% set dt = '' %}
                             {% for evn in events %}
-                                {% if i < 4 %}
-                                    <li class="time-label">
-                                        <span class="bg-red" style="padding-right: 0;">{{ evn.date|date('d.m.Y') }}</span>
-                                        <span class="bg-red">{{ evn.name }}</span>
-                                    </li>
+                                {% if i < 11 %}
+                                   {% if dt != evn.date|date('d.m.Y') %}
+                                        <li class="time-label">
+                                            <span class="bg-red" style="padding-right: 0;">{{ evn.date|date('d.m.Y') }}</span>
+                                            {#<span class="bg-red">{{ evn.name }}</span>#}
+                                        </li>
+                                   {% endif %}
+
                                     <li>
                                         <div class="timeline-item">
                                             <div class="timeline-body">
@@ -139,6 +143,8 @@
                                             </div>
                                         </div>
                                     </li>
+
+                                {% set dt = evn.date|date('d.m.Y') %}
                                 {% endif %}
                                 {% set i = i + 1 %}
                             {% endfor %}

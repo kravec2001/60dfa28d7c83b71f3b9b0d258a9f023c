@@ -71,6 +71,22 @@ class PsbEvents
      */
     private $countDays;
 
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="begin_days_after", type="integer", nullable=true)
+     */
+    private $beginDaysAfter;
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="end_kol_days", type="integer", nullable=true)
+     */
+    private $endKolDays;
+
+
     /**
      * @var string|null
      *
@@ -191,6 +207,39 @@ class PsbEvents
     {
         return $this->countDays;
     }
+
+    /**
+     * @return int|null
+     */
+    public function getBeginDaysAfter(): ?int
+    {
+        return $this->beginDaysAfter;
+    }
+
+    /**
+     * @param int|null $beginDaysAfter
+     */
+    public function setBeginDaysAfter(?int $beginDaysAfter): void
+    {
+        $this->beginDaysAfter = $beginDaysAfter;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getEndKolDays(): ?int
+    {
+        return $this->endKolDays;
+    }
+
+    /**
+     * @param int|null $endKolDays
+     */
+    public function setEndKolDays(?int $endKolDays): void
+    {
+        $this->endKolDays = $endKolDays;
+    }
+
 
 
 }
