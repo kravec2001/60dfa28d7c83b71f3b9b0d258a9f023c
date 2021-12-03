@@ -10,6 +10,23 @@
 {% block body %}
     <form method="post" class="form-login">
 
+        <div class="text-center mb-0">
+            <object type="image/svg+xml"
+                    data="{{ asset('img/logo.png') }}"
+                    width="256px"
+                    height="256px">
+                <img src="{{ asset('img/logo.png') }}" alt="Система адаптации IT-специалистов">
+            </object>
+        </div>
+
+
+        <div class="text-center mb-4">
+            <div class="header-user__title">
+                <span class="form-label-title-blue">Система адаптации</span>
+                <span class="form-label-title-blue">IT-специалистов</span>
+            </div>
+        </div>
+
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
