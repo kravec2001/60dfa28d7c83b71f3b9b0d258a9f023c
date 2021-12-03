@@ -64,7 +64,11 @@
                                 <li>
                                     <div class="timeline-item">
                                         <div class="timeline-body">
-                                            <span class="dayNumber"></span>
+                                            <span class="dayNumber">
+                                                 {% if evn.status == 1 %}
+                                                     <img src="/img/icon/check.png" style="width:24px; float:right;">
+                                                 {% endif %}
+                                            </span>
                                             <div class="timeline-description">{{ evn.event }}</div>
                                         </div>
                                     </div>

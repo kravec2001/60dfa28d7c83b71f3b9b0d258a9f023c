@@ -46,6 +46,13 @@ class PsbEventsPers
     /**
      * @var int|null
      *
+     * @ORM\Column(name="status_chief", type="integer", nullable=true)
+     */
+    private $statusChief = '0';
+
+    /**
+     * @var int|null
+     *
      * @ORM\Column(name="number_order", type="integer", nullable=true)
      */
     private $numberOrder;
@@ -128,6 +135,22 @@ class PsbEventsPers
     public function setNumberOrder(?int $numberOrder): void
     {
         $this->numberOrder = $numberOrder;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getStatusChief()
+    {
+        return $this->statusChief;
+    }
+
+    /**
+     * @param int|null $statusChief
+     */
+    public function setStatusChief($statusChief): void
+    {
+        $this->statusChief = $statusChief;
     }
 
 }
