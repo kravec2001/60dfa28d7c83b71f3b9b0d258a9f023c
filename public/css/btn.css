@@ -130,3 +130,134 @@ a {
 .email {
     color: #747F8B
 }
+
+.timeline {
+    position: relative;
+    margin: 0 0 30px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.timeline:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #e0edf5;
+    left: 31px;
+    margin: 0;
+    border-radius: 2px;
+}
+
+.timeline > li {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.timeline > li:before, .timeline > li:after {
+    content: " ";
+    display: table;
+}
+
+.timeline > .time-label > span {
+    font-weight: 600;
+    padding: 5px;
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 4px;
+    color: #000 !important;
+}
+
+.timeline-flag {
+    width: 35px;
+    height: 35px;
+    font-size: 22px !important;
+    line-height: 35px !important;
+    position: absolute;
+    color: #fff !important;
+    background: #fff;
+    border-radius: 50% !important;
+    text-align: center;
+    left: 15px;
+    top: 0px;
+}
+
+.timeline > li > .timeline-item {
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    margin-top: 0;
+    background: #fff;
+    color: #000;
+    margin-left: 60px;
+
+    padding: 0;
+    position: relative;
+}
+
+.timeline-inverse > li > .timeline-item {
+    background: #f4f8fb;
+    border: 1px solid #e5ecf1;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.timeline > li > .timeline-item > .time {
+    color: #999;
+    float: right;
+    padding: 10px;
+    font-size: 12px;
+}
+
+.timeline > li > .timeline-item > .timeline-header {
+    margin: 0;
+    color: #333;
+    border-bottom: 1px solid #f4f4f4;
+    padding: 10px;
+    font-size: 14px;
+    line-height: 1.1;
+}
+
+.timeline-inverse > li > .timeline-item > .timeline-header {
+    border-bottom-color: #ddd;
+}
+
+.timeline-header a {
+    border-right: 1px solid #ddd;
+    padding-right: 5px;
+}
+
+.timeline > li > .timeline-item > .timeline-body, .timeline > li > .timeline-item > .timeline-footer {
+    padding: 10px;
+}
+
+.timeline-body:after {
+    clear: both;
+}
+
+.timeline-body {
+    min-height: 35px;
+    border-bottom: 1px solid #ddd;
+}
+
+.dayNumber {
+    color: #999;
+    font-size: 12px;
+    float: right;
+}
+
+.timeline-description {
+    margin-right: 40px;
+}
+.empty-history-inf-supp {
+    position: absolute;
+    top: 30px;
+    font-size: 16px;
+    text-align: center;
+    color: #424242;
+}
+
+.field-new-line{
+    margin-right: 100%;
+}
