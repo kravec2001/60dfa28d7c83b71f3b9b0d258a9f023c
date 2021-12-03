@@ -65,6 +65,13 @@ class PsbEvents
     private $countBall = '0';
 
     /**
+     * @var int|null
+     *
+     * @ORM\Column(name="count_days", type="integer", nullable=true)
+     */
+    private $countDays;
+
+    /**
      * @var string|null
      *
      * @ORM\Column(name="event_hyperlink", type="string", nullable=true)
@@ -175,6 +182,14 @@ class PsbEvents
     public function setCountBall($countBall): void
     {
         $this->countBall = $countBall;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getCountDays(): ?int
+    {
+        return $this->countDays;
     }
 
 

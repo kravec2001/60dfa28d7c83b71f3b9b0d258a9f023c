@@ -5,6 +5,9 @@ namespace App\Controller;
 
 use App\Entity\PsbUser;
 use App\Entity\Role;
+use App\Entity\PsbEvents;
+use App\Entity\PsbEventsPers;
+use App\Entity\PsbEventsTypes;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -50,13 +53,18 @@ class UserController extends AbstractController
         ]);
 
         $em = $this->get('doctrine')->getManager();
+
         $query = $em->createQuery(
-            'SELECT e.event 
+            'SELECT e.event, t.name, u.dateStart date, e.countDays 
                FROM App\Entity\PsbEventsPers p,
-                    App\Entity\PsbEvents e
+                    App\Entity\PsbEvents e,
+                    App\Entity\PsbEventsTypes t, 
+                    App\Entity\PsbUser u
               WHERE p.idUser = ' . $user->getId() . '                
                 AND p.idEvents = e.id
                 AND p.status = 0
+                AND t.id = e.typEvent
+                AND u.id = p.idUser 
                 order by p.numberOrder
                ');
         $events = $query->getResult();

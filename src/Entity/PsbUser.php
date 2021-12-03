@@ -86,6 +86,13 @@ class PsbUser
     private $email;
 
     /**
+     * @var \DateTime|null
+     *
+     * @ORM\Column(name="date_start", type="datetime", nullable=true)
+     */
+    private $dateStart;
+
+    /**
      * @var int|null
      *
      * @ORM\Column(name="id_teacher", type="integer", nullable=true)
@@ -339,6 +346,21 @@ class PsbUser
         $this->idTeacher = $idTeacher;
     }
 
+    /**
+     * @return \DateTime|null
+     */
+    public function getDateStart(): ?\DateTime
+    {
+        return $this->dateStart;
+    }
+
+    /**
+     * @param \DateTime|null $dateStart
+     */
+    public function setDateStart(?\DateTime $dateStart): void
+    {
+        $this->dateStart = $dateStart;
+    }
 
 
 }
