@@ -130,3 +130,11 @@ a {
 .email {
     color: #747F8B
 }
+
+.fa-phone:before {
+ color: #747F8B;
+}
+
+.fa-envelope-open:before {
+    color: #747F8B;
+}
