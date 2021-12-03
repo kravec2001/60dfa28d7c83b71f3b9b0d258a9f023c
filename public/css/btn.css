@@ -50,7 +50,7 @@ a {
     color: #fff;
     background-color: #FA4616;
     border-color: #FA4616;
-    box-shadow: 0 0 0 0.2rem rgba(234 86 20, 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(234,86,20, 0.5);
 }
 
 .btn-first.disabled, .btn-first:disabled {
@@ -124,7 +124,7 @@ a {
 }
 
 .skills1 {
-    background-color: rgba(234 86 20, 0.2)
+    background-color: #FA4616;
 }
 
 .email {
@@ -143,8 +143,8 @@ a {
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 4px;
-    background: #e0edf5;
+    width: 1px;
+    background: #FA4616;
     left: 31px;
     margin: 0;
     border-radius: 2px;
@@ -260,4 +260,20 @@ a {
 
 .field-new-line{
     margin-right: 100%;
+}
+
+.fa-phone:before {
+    color: #747F8B;
+}
+.fa-envelope-open:before {
+    color: #747F8B;
+}
+
+.text-muted {
+    color: #747F8B !important;
+    font-size: 15px;
+}
+
+.text-post {
+    font-size: 15px;
 }
