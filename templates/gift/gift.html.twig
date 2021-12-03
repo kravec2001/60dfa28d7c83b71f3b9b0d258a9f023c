@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row mb-2">
+        <div class="col-md-6 mb-6">
+            <div class="card p-3">
+                <div class="d-flex align-items-start">
+                    <div class="image">
+                        <img src="/img/icon/gift-3.png" style="height: 130px; padding: 10px;"/>
+                    </div>
+                    <div class="ml-3 w-100 d-flex flex-column">
+                        <h5 class="mb-0 mt-0">Интересная книга </h5>
+                        <small class="mb-3">
+                            <span class="text-muted">Читайте с удовольствием</span> <br>
+                            Книга по программированию
+                        </small>
+                        <div class="d-flex justify-content-between">
+                            <span class="text-muted"><b>30 баллов</b></span>
+                        </div>
+                    </div>
+                    <div class="mt-5 ">
+                        {% if bonus > 30 %}
+                            <form action="
+                       {% if return == 1 %}
+                          {{ path("user_map") }}
+                       {% else %}
+                          {{ path("user") }}
+                       {% endif %}" method="post">
+                                <button class="btn btn-lg btn-first" type="submit" id="next" name="save" class="btn btn-info"
+                                        style="display:block; margin:auto">Выбрать
+                                </button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-6">
+            <div class="card p-3">
+                <div class="d-flex align-items-start">
+                    <div class="image">
+                        <img src="/img/icon/gift-2.png" style="height: 130px; padding: 10px;"/>
+                    </div>
+                    <div class="ml-3 w-100 d-flex flex-column">
+                        <h5 class="mb-0 mt-0">Учебный курс</h5>
+                        <small class="mb-3">
+                            <span class="text-muted">Увлекательные занятия</span> <br>
+                            Позвательный материал
+                        </small>
+                        <div class="d-flex justify-content-between">
+                            <span class="text-muted"><b>40 баллов</b></span>
+                        </div>
+                    </div>
+                    <div class="mt-5 ">
+                        {% if bonus > 40 %}
+                            <form action="
+                            {% if return == 1 %}
+                               {{ path("user_map") }}
+                            {% else %}
+                               {{ path("user") }}
+                            {% endif %}" method="post">
+                                <button class="btn btn-lg btn-first" type="submit" id="next" name="save" class="btn btn-info"
+                                        style="display:block; margin:auto">Выбрать
+                                </button>
+                            </form>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col-md-6 mb-6">
+            <div class="card p-3">
+                <div class="d-flex align-items-start">
+                    <div class="image">
+                        <img src="/img/icon/gift-4.png" style="height: 130px; padding: 10px;"/>
+                    </div>
+                    <div class="ml-3 w-100 d-flex flex-column">
+                        <h5 class="mb-0 mt-0">Сертификат</h5>
+                        <small class="mb-3">
+                            <span class="text-muted">Приятное поощрение</span> <br>
+                            Творческая мастерская
+                        </small>
+                        <div class="d-flex justify-content-between">
+                            <span class="text-muted"><b>
+                                    {% if bonus < 50 %}
+                                        {{ bonus }} из
+                                    {% endif %} 50 баллов</b></span>
+                        </div>
+                    </div>
+                    <div class="mt-5 ">
+                        {% if bonus > 50 %}
+                            <form action="
+                          {% if return == 1 %}
+                             {{ path("user_map") }}
+                          {% else %}
+                             {{ path("user") }}
+                             {% endif %}" method="post">
+                                <button class="btn btn-lg btn-first" type="submit" id="next" name="save" class="btn btn-info"
+                                        style="display:block; margin:auto">Выбрать
+                                </button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if return == 1 %}
+        <div>
+            <form action="{{ path("user_map") }}" method="post">
+                <button type="submit" id="next" name="save" class="btn btn-success btn-lg"
+                        style="display:block; margin:auto">Продолжить
+                </button>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}

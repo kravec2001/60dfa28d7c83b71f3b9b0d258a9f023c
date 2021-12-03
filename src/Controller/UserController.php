@@ -98,13 +98,37 @@ class UserController extends AbstractController
             'title' => 'Идеи и предложения',
             'breadcrumbs' => [
                 [
-                    'url' => $this->generateUrl('user_dashboard'),
+                    'url' => $this->generateUrl('user'),
                     'name' => 'Кабинет сотрудника',
                 ],
                 [
                     'name' => 'Идеи и предложения',
                 ],
             ],
+        ]);
+    }
+
+    /**
+     * @Route("/user/gift", name="user_gift")
+     * @Route("/user/gift/{id}", name="user_gift")
+     */
+    public function userGift($id=null): Response
+    {
+        $this->denyAccessUnlessGranted(Role::USER);
+
+        return $this->render('gift/gift.html.twig', [
+            'title' => 'Выбор подарков',
+            'breadcrumbs' => [
+                [
+                    'url' => $this->generateUrl('user'),
+                    'name' => 'Кабинет сотрудника',
+                ],
+                [
+                    'name' => 'Выбор подарков',
+                ],
+            ],
+            'bonus' => $this->getUser()->getPsbUser()->getBonus(),
+            'return' => (isset($id) ? 1 : 0)
         ]);
     }
 
