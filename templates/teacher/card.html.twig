@@ -33,9 +33,9 @@
                 <hr width="100%" align="left" size="5">
                 <p class="usertitlepost">Уровень прохождения плана обучения</p>
                 <div class="container1">
-                    {{ (user.cnty / (user.cnt) * 100) // 1 }} %
                     <div class="skills1 html"
-                         style="width: {{ (user.cnty / (user.cnt) * 100) // 1 }}%;">
+                         style="width: {{ (user.cnty / (user.cnt) * 100) // 1 }}%; background-color: #4CAF50;">
+                        {{ (user.cnty / (user.cnt) * 100) // 1 }} %
                     </div>
                 </div>
                 <div>

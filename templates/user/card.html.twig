@@ -87,9 +87,9 @@
             <div class="usercard p-3">
                 <p class="usertitlepost">Уровень прохождения плана обучения</p>
                 <div class="container1">
-                    {{ (status[0]['cnty'] / (status[0]['cnt']) * 100) // 1 }} %
                     <div class="skills1 html"
-                         style="width: {{ (status[0]['cnty'] / (status[0]['cnt']) * 100) // 1 }}%;">
+                         style="width: {{ (status[0]['cnty'] / (status[0]['cnt']) * 100) // 1 }}%; background-color: #4CAF50;">
+                        {{ (status[0]['cnty'] / (status[0]['cnt']) * 100) // 1 }} %
                     </div>
                 </div>
                 <div>
