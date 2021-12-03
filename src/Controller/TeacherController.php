@@ -3,8 +3,12 @@
 
 namespace App\Controller;
 
+use App\Entity\PsbEventsProfile;
+use App\Entity\PsbProfiles;
 use App\Entity\PsbUser;
 use App\Entity\Role;
+use App\Form\AddProfileForm;
+use App\Form\ProfileForm;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -65,6 +69,99 @@ class TeacherController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/teacher/profile", name="teacher_profile")
+     */
+    public function newplanAction(Request $request): Response
+    {
+        $this->denyAccessUnlessGranted(Role::TEACHER);
 
+        $formData = $request->get(ProfileForm::NAME);
+        unset($formData['_token']);
+
+        $desc = "";
+        $users = [];
+
+        if (!isset($formData['profileId'])) {
+            $formData['profileId'] = null;
+            $formData['usl'] = [];
+        } else if (isset($formData['profileId'])) {
+            $last = $request->getSession()->get('profileId', -1);
+            $request->getSession()->save();
+            $formData['usl'] = [];
+
+            $dataset = $this->getDoctrine()->getRepository(PsbEventsProfile::class)->findBy([
+                'idProfile' => $formData['profileId']
+            ]);
+
+            foreach ($dataset as $item) {
+                $formData['usl'][] = [
+                    'profileId' => $item->getidProfile() . "",
+                    'idEvents' => $item->getidEvents() . "",
+                ];
+            }
+        }
+
+        $request->request->set(ProfileForm::NAME, $formData);
+
+        $newProfileForm = $this->createForm(ProfileForm::class, $formData, [
+            'em' => $this->getDoctrine()->getManager(),
+        ]);
+
+        $newProfileForm->handleRequest($request);
+
+        return $this->render('teacher/newprofile.html.twig', [
+            'title' => 'Управление профилями обучения',
+            'form' => $newProfileForm->createView(),
+            'breadcrumbs' => [
+                [
+                    'url' => $this->generateUrl('teacher'),
+                    'name' => 'Кабинет наставника',
+                ],
+                [
+                    'name' => 'Управление профилями обучения',
+                ],
+            ],
+        ]);
+    }
+
+
+    /**
+     * @Route("/teacher/addprofile", name="teacher_add_profile")
+     */
+    public function show(Request $request): Response
+    {
+        $this->denyAccessUnlessGranted(Role::TEACHER);
+
+        $events = new PsbProfiles();
+        $form = $this->createForm(AddProfileForm::class, $events, [
+            'em' => $this->getDoctrine()->getManager(),
+        ]);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $prof = $form['profile']->getData();
+            $events->setProfile($prof);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($events);
+            $entityManager->flush();
+            return $this->redirectToRoute('teacher_profile');
+        }
+
+        return $this->render('teacher/addprofile.html.twig', [
+            'title' => 'Управление профилями обучения',
+            'form' => $form->createView(),
+            'breadcrumbs' => [
+                [
+                    'url' => $this->generateUrl('teacher'),
+                    'name' => 'Кабинет наставника',
+                ],
+                [
+                    'name' => 'Управление профилями обучения',
+                ],
+            ],
+        ]);
+
+    }
 
 }
