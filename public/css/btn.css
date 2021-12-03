@@ -114,12 +114,13 @@ a {
 }
 
 .list-group-item-info {
-    color: #30353B!important;
-    background-color: #fff!important;
+    color: #30353B;
+    background-color: #fff;
     padding: 15px 40px;
 }
 .btn-success {
     background-color: #FA4616!important;
+    border-color: #FA4616!important;
     color: #FFF;
 }
 
@@ -281,4 +282,14 @@ a {
 .icon_user {
     width: 130px;
     higth: 130px;
+}
+
+.page-item.active .page-link {
+    background-color: rgb(43,44,132)!important;
+    border-color: rgb(43,44,132)!important;
+}
+.list-group-item-info:hover {
+    text-decoration: none;
+    background: #FA4616;
+    color: #fff;
 }

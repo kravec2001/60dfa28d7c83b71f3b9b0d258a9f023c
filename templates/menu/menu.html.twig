@@ -4,13 +4,13 @@
         =
     </button>
     <div class="dropdown-menu main-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item list-group-item-info" href="#">Документы</a>
+        <a class="dropdown-item list-group-item-info" href="{{ path('user_grid') }}">Документы</a>
         <a class="dropdown-item list-group-item-info" href="{{ path('user_team') }}">Наша команда</a>
-        <a class="dropdown-item list-group-item-info" href="#">Текущие проекты</a>
-        <a class="dropdown-item list-group-item-info" href="#">Тестирование</a>
+        <a class="dropdown-item list-group-item-info" href="{{ path('user_project') }}">Текущие проекты</a>
+        <a class="dropdown-item list-group-item-info" href="{{ path('user_testing') }}">Тестирование</a>
         <a class="dropdown-item list-group-item-info" href="#">Календарь событий</a>
         <a class="dropdown-item list-group-item-info" href="{{ path('user_map') }}">Карта адаптации</a>
+        <a class="dropdown-item list-group-item-info" href="{{ path('user_gift') }}">Выбор подарков</a>
         <a class="dropdown-item list-group-item-info" href="{{ path('user_idea') }}">Идеи и предложения</a>
-        <a class="dropdown-item list-group-item-info" href="{{ path('user_gift') }}">Магазин подарков</a>
     </div>
 </div>
