@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ data.title }}{% endblock %}
+
+{% block body %}
+<div class="d-flex flex-column" style="flex:1">
+            <div style="
+                    height : 250px;
+                    width: 100%;
+                    background-image: url('/img/info/{{ data.imgInfo }}');
+                    background-repeat:no-repeat;
+                    background-position: left center;
+                    background-size: contain;">
+            </div>
+            <div style="text-align: justify">
+                <h5>{{ data.title }}</h5>
+                <br>
+                {{ data.dataInfo | raw }}
+            </div>
+        </tr>
+</div>
+
+    {% if return == 1 %}
+        <div>
+            <form action="{{ path("user_map") }}" method="post">
+                <button type="submit" id="next" name="save" class="btn btn-success btn-lg"
+                        style="display:block; margin:auto">Продолжить</button>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}
