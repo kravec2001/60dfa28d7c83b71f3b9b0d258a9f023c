@@ -274,11 +274,14 @@ class UserController extends AbstractController
     /**
      * @Route("/user/project", name="user_project")
      * @Route("/user/project/{id}", name="user_project")
-     *
+     * @Route("/admin/project", name="admin_project")
+     * @Route("/teacher/project", name="teacher_project")
      */
     public function ProjectAction(Request $request, $id = null): Response
     {
-        if (!$this->isGranted(Role::ADMIN) && !$this->isGranted(Role::USER)) {
+        if (!$this->isGranted(Role::ADMIN) &&
+            !$this->isGranted(Role::TEACHER) &&
+            !$this->isGranted(Role::USER)) {
             throw $this->createAccessDeniedException();
         }
 
@@ -361,8 +364,12 @@ class UserController extends AbstractController
             'form' => $newProjectForm->createView(),
             'breadcrumbs' => [
                 [
-                    'url' => $this->generateUrl('user'),
-                    'name' => 'Кабинет сотрудника',
+                    'url' => $this->generateUrl(
+                            ($this->isGranted(Role::ADMIN) ? 'admin' :
+                            ($this->isGranted(Role::TEACHER) ? 'teacher' : 'user'))
+                    ),
+                    'name' => 'Кабинет '.($this->isGranted(Role::ADMIN) ? 'руководителя' :
+                                         ($this->isGranted(Role::TEACHER) ? 'наставника' : 'пользователя')),
                 ],
                 [
                     'name' => 'Текущие проекты',

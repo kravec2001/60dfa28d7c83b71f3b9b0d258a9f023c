@@ -15,17 +15,27 @@ class GridController extends AbstractController
     /**
      * @Route("/user/docs", name="user_grid")
      * @Route("/user/docs/{id}", name="user_grid")
-     */
+     * @Route("/teacher/docs", name="teacher_grid")
+     * @Route("/admin/docs", name="admin_grid")
+    */
     public function user($id = 0): Response
     {
-        $this->denyAccessUnlessGranted(Role::USER);
+        if (!$this->isGranted(Role::ADMIN) &&
+            !$this->isGranted(Role::TEACHER) &&
+            !$this->isGranted(Role::USER)) {
+            throw $this->createAccessDeniedException();
+        }
 
         return $this->render('grid/docs.html.twig', [
             'title' => 'Документы',
             'breadcrumbs' => [
                 [
-                    'url' => $this->generateUrl('user'),
-                    'name' => 'Кабинет сотрудника',
+                    'url' =>  $this->generateUrl(
+                        ($this->isGranted(Role::ADMIN) ? 'admin' :
+                            ($this->isGranted(Role::TEACHER) ? 'teacher' : 'user'))
+                    ),
+                    'name' => 'Кабинет '.($this->isGranted(Role::ADMIN) ? 'руководителя' :
+                                         ($this->isGranted(Role::TEACHER) ? 'наставника' : 'пользователя')),
                 ],
                 [
                     'name' => 'Документы',
