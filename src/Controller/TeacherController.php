@@ -65,7 +65,7 @@ class TeacherController extends AbstractController
                 AND p.status = 0
                 AND t.id = e.typEvent
                 AND u.id = p.idUser
-                AND e.doBoss = 1 
+                AND e.doMentor = 1 
                 order by u.dateStart + e.beginDaysAfter 
                ');
         $events = $query->getResult();

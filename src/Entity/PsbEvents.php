@@ -94,6 +94,13 @@ class PsbEvents
     private $doBoss;
 
     /**
+     * @var int|null
+     *
+     * @ORM\Column(name="do_mentor", type="integer", nullable=true)
+     */
+    private $doMentor;
+
+    /**
      * @var string|null
      *
      * @ORM\Column(name="event_hyperlink", type="string", nullable=true)
@@ -260,6 +267,22 @@ class PsbEvents
     public function setDoBoss(?int $doBoss): void
     {
         $this->doBoss = $doBoss;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getDoMentor(): ?int
+    {
+        return $this->doMentor;
+    }
+
+    /**
+     * @param int|null $doMentor
+     */
+    public function setDoMentor(?int $doMentor): void
+    {
+        $this->doMentor = $doMentor;
     }
 
 
