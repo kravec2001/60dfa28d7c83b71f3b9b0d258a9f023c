@@ -61,7 +61,7 @@ class UserController extends AbstractController
         $em = $this->get('doctrine')->getManager();
 
         $query = $em->createQuery(
-            'SELECT e.event, t.name, (u.dateStart + e.beginDaysAfter) date, e.countDays 
+            'SELECT e.event, t.name, (u.dateStart + e.beginDaysAfter) date, e.countDays, p.status 
                FROM App\Entity\PsbEventsPers p,
                     App\Entity\PsbEvents e,
                     App\Entity\PsbEventsTypes t, 
