@@ -48,6 +48,7 @@ class MapController extends AbstractController
                     App\Entity\PsbEventsTypes t
               WHERE e.id = p.idEvents 
                 AND e.typEvent = t.id
+                AND e.doPerson = 1
                 AND p.idUser = '.$user->getId().'                
               ORDER BY p.numberOrder
                ');
