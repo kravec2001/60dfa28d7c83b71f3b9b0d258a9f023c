@@ -3,19 +3,25 @@
     /*            max-width: 300px;
                 margin: auto;*/
     text-align: center;
-    font-family: arial;
+    font-family: PTSerif;
     margin-bottom: 30px;
 }
 
 .usertitle {
-    color: grey;
-    font-size: 14px;
+    color: #979A9D;
+    font-size: 16px;
     margin-top: 20px;
 }
 
+.fio {
+    color: #30353B;
+    font-size: 24px;
+}
+
 .usertitlepost {
-    font-size: 14px;
+    font-size: 24px;
     margin-top: 20px;
+    font-weight: bold;
 }
 
 * {box-sizing: border-box}

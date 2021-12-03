@@ -1,42 +1,74 @@
+@font-face {
+    font-family: "PTSerif";
+    src: url("../fonts/PTSerif-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+font-family: "PTSerif";
+src: url("../fonts/PTSerif-Bold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "PTSerif";
+    src: url("../fonts/PTSerif-Italic.ttf") format("truetype");
+    font-style: italic;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "PTSerif";
+    src: url("../fonts/PTSerif-BoldItalic.ttf") format("truetype");
+    font-style: italic;
+    font-weight: bold;
+}
+
+body {
+    font-family: "PTSerif";
+}
+
 a {
-    color: #563BC2;
+    color: rgb(43,44,132);
 }
 
 .btn-first {
-    color: #fff;
-    background-color: #FA4616;
+    color: #FA4616;
+    background-color: #FFF;
     border-color: #FA4616;
 }
 
 .btn-first:hover {
     color: #fff;
-    background-color: #2424a0;
-    border-color: #1c1b7d;
+    background-color: #FA4616;
+    border-color: #FA4616;
 }
 
 .btn-first:focus, .btn-first.focus {
     color: #fff;
-    background-color: #2424a0;
-    border-color: #1c1b7d;
-    box-shadow: 0 0 0 0.2rem rgba(49, 48, 179, 0.5);
+    background-color: #FA4616;
+    border-color: #FA4616;
+    box-shadow: 0 0 0 0.2rem rgba(234 86 20, 0.5);
 }
 
 .btn-first.disabled, .btn-first:disabled {
     color: #fff;
-    background-color: #3231b1;
-    border-color: #3231b1;
+    background-color:  #FA4616;
+    border-color:  #FA4616;
 }
 
 .btn-first:not(:disabled):not(.disabled):active, .btn-first:not(:disabled):not(.disabled).active,
 .show > .btn-first.dropdown-toggle {
     color: #fff;
-    background-color: #2424a0;
-    border-color: #1c1b7d;
+    background-color: #FA4616;
+    border-color: #FA4616;
 }
 
 .btn-first:not(:disabled):not(.disabled):active:focus, .btn-first:not(:disabled):not(.disabled).active:focus,
 .show > .btn-first.dropdown-toggle:focus {
-    box-shadow: 0 0 0 0.2rem rgba(49, 48, 179, 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(234 86 20, 0.5);
 }
 
 .text-first {
@@ -46,8 +78,8 @@ a {
 }
 
 .text-first:hover, .text-first:active {
-    color: #2424a0;
-    text-shadow: 0 0 .2rem rgba(49, 48, 179, 0.2);
+    color: #FA4616;
+    text-shadow: 0 0 .2rem rgba(234, 86 20, 0.2);
 }
 
 .form-label-title-blue {
@@ -78,6 +110,7 @@ a {
 
 .main-menu{
     background-color: #FA4616!important;
+    color: #FFF;
 }
 
 .list-group-item-info {
@@ -86,5 +119,14 @@ a {
     padding: 15px 40px;
 }
 .btn-success {
-    background-color: rgb(43, 44, 132)!important;
+    background-color: #FA4616!important;
+    color: #FFF;
+}
+
+.skills1 {
+    background-color: rgba(234 86 20, 0.2)
+}
+
+.email {
+    color: #747F8B
 }

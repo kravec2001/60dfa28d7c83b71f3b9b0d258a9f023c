@@ -14,7 +14,7 @@
     <div class="row mb-2">
         <div class="col-md-3">
             <div class="usercard">
-                <p style="color: white; background: #747F8B">{{ app.user.psbUser.fio }}</p>
+                <p class = "fio">{{ app.user.psbUser.fio }}</p>
                 <img src="/img/users/{{ app.user.psbUser.img }}" style="width:80%">
                 <p class="usertitle">{{ app.user.psbUser.depart.name }}</p>
                 <p class="usertitlepost">{{ app.user.psbUser.post.name }}</p>
@@ -31,19 +31,19 @@
         </div>
         <div class="col-md-9">
             <div class="usercard">
-                <p style="color: #fff; background: #747F8B">Руководитель</p>
+                <p class = "fio">{{ manager.fio }}</p>
                 <div class="row mb-2">
                     <div class="col-md-2">
                         <img src="/img/users/{{ manager.img }}" style="width:80px; higth:80px ">
                     </div>
                     <div class="col-md-7">
                         <div class="d-flex">
-                            <h6 class="mb-0 mt-0">{{ manager.fio }}</h6>
+                            <small class="mb-1">
+                                <span class="usertitle">{{ manager.depart.name }}</span> <br>
+                            </small>
                         </div>
                         <div class="d-flex">
-                            <small class="mb-1">
-                                <span class="text-muted">{{ manager.depart.name }}</span> <br>
-                            </small>
+                            <p class = "usertitlepost">Руководитель</p>
                         </div>
                         <div class="d-flex">
                             <a><i class="fa fa-phone text-info"> </i></a>
@@ -51,26 +51,26 @@
                         </div>
                         <div class="d-flex" style="margin-bottom: 10px">
                             <a><i class="fa fa-envelope-open text-info"> </i></a>
-                            <span style="margin-left: 5px">{{ manager.email }}</span>
+                            <span clas="email" style="margin-left: 5px"><a href="mailto:">{{ manager.email }}</a></span>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="usercard">
-                <p style="color: #fff; background: #747F8B">Наставник</p>
+                <p class = "fio">{{ teacher.fio }}</p>
                 <div class="row mb-2">
                     <div class="col-md-2">
                         <img src="/img/users/{{ teacher.img }}" style="width:80px; higth:80px ">
                     </div>
                     <div class="col-md-7">
                         <div class="d-flex">
-                            <h6 class="mb-0 mt-0">{{ teacher.fio }}</h6>
+                            <small class="mb-1">
+                                <span class="usertitle">{{ teacher.depart.name }}</span> <br>
+                            </small>
                         </div>
                         <div class="d-flex">
-                            <small class="mb-1">
-                                <span class="text-muted">{{ teacher.depart.name }}</span> <br>
-                            </small>
+                        <p class="usertitlepost">Наставник</p>
                         </div>
                         <div class="d-flex">
                             <a><i class="fa fa-phone text-info"> </i></a>
@@ -78,18 +78,18 @@
                         </div>
                         <div class="d-flex" style="margin-bottom: 10px">
                             <a><i class="fa fa-envelope-open text-info"> </i></a>
-                            <span style="margin-left: 5px">{{ teacher.email }}</span>
+                            <span class="email" style="margin-left: 5px"><a href="mailto:">{{ teacher.email }}</a></span>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="usercard p-3">
-                <p style="color: #1c1b7d;"><b>Уровень прохождения плана обучения</b></p>
+                <p class="usertitlepost">Уровень прохождения плана обучения</p>
                 <div class="container1">
                     {{ (status[0]['cnty'] / (status[0]['cnt']) * 100) // 1 }} %
                     <div class="skills1 html"
-                         style="width: {{ (status[0]['cnty'] / (status[0]['cnt']) * 100) // 1 }}%; background-color: #4CAF50;">
+                         style="width: {{ (status[0]['cnty'] / (status[0]['cnt']) * 100) // 1 }}%;">
                     </div>
                 </div>
                 <div>

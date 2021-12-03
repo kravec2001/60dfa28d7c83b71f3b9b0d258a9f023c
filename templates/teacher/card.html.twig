@@ -17,7 +17,7 @@
 
         <div class="col-md-3">
             <div class="usercard">
-                <p style="color: white; background: #747F8B">{{user.fio }}</p>
+                <p class = "fio">{{user.fio }}</p>
                 <img src="/img/users/{{ user.img }}" style="width:80%">
                 <p class="usertitle">{{ user.depart }}</p>
                 <p class="usertitlepost">{{ user.post }}</p>
@@ -35,7 +35,7 @@
                 <div class="container1">
                     {{ (user.cnty / (user.cnt) * 100) // 1 }} %
                     <div class="skills1 html"
-                         style="width: {{ (user.cnty / (user.cnt) * 100) // 1 }}%; background-color: #4CAF50;">
+                         style="width: {{ (user.cnty / (user.cnt) * 100) // 1 }}%;">
                     </div>
                 </div>
                 <div>
