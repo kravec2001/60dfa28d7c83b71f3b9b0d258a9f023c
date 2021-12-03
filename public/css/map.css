@@ -40,13 +40,13 @@
     text-align: center;
     line-height: 40px;
     background: #fff;
-    box-shadow: inset 0 0 0 2px rgb(234 86 20);
+    box-shadow: inset 0 0 0 2px rgb(234,86,20);
     transition: .2s;
     color: rgb(43,44,132);
 }
 .menu-link-0:hover:after {
     color: #fff;
-    background: rgb(234,86,20);
+    background: rgb(43,44,132);
     box-shadow: 0 0 5px #fff;
 }
 .menu-link-0:before {
@@ -82,7 +82,7 @@
     margin: -10px 0 0 -50px;
     text-align: center;
     line-height: 40px;
-    background: rgb(78,98,28);
+    background: #FA4616;
     #box-shadow: inset 0 0 0 2px rgb(100,104,114);
     transition: .2s;
     color: #fff;
@@ -118,7 +118,7 @@
     background-image: url(../img/map/icon_analitics.png);
 }
 .item-5 .menu-link-0:before {
-    background-image: url(../img/map/doc.jpg);
+    background-image: url(../img/map/investor.png);
 }
 
 .item-1 .menu-link-1:before {
@@ -134,7 +134,7 @@
     background-image: url(../img/map/icon_analitics.png);
 }
 .item-5 .menu-link-1:before {
-    background-image: url(../img/map/doc.jpg);
+    background-image: url(../img/map/investor.png);
 }
 
 /*Магия*/
