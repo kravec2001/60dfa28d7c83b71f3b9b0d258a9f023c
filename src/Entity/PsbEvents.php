@@ -115,6 +115,13 @@ class PsbEvents
     private $eventHyperlink;
 
     /**
+     * @var int|null
+     *
+     * @ORM\Column(name="url", type="integer", nullable=true)
+     */
+    private $url;
+
+    /**
      * @var \PsbUser
      *
      * @ORM\ManyToOne(targetEntity="PsbUser")
@@ -308,6 +315,68 @@ class PsbEvents
         $this->doPerson = $doPerson;
     }
 
+    /**
+     * @return string|null
+     */
+    public function getText(): ?string
+    {
+        return $this->text;
+    }
 
+    /**
+     * @param string|null $text
+     */
+    public function setText(?string $text): void
+    {
+        $this->text = $text;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getEventHyperlink(): ?string
+    {
+        return $this->eventHyperlink;
+    }
+
+    /**
+     * @param string|null $eventHyperlink
+     */
+    public function setEventHyperlink(?string $eventHyperlink): void
+    {
+        $this->eventHyperlink = $eventHyperlink;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getUrl(): ?int
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param int|null $url
+     */
+    public function setUrl(?int $url): void
+    {
+        $this->url = $url;
+    }
+
+    /**
+     * @return \PsbUser
+     */
+    public function getIdPsbUser(): \PsbUser
+    {
+        return $this->idPsbUser;
+    }
+
+    /**
+     * @param \PsbUser $idPsbUser
+     */
+    public function setIdPsbUser(\PsbUser $idPsbUser): void
+    {
+        $this->idPsbUser = $idPsbUser;
+    }
 
 }
