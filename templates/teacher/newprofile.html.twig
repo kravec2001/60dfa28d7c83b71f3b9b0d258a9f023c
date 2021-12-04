@@ -87,6 +87,28 @@
         {% endif %}
     </div>
 
+    {% if form.usl is defined and form.usl %}
+        <br>
+        <button type="button" class="btn btn-first" data-toggle="modal" data-target="#setProfModal"
+                style="margin: auto;display: block;">Сохранить
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="setProfModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Изменения в профиле сохранены</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{{ path('teacher') }}" type="button"
+                           class="btn btn-outline-secondary" style="margin-left: auto;display: block;">Ок</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
     {{ form_rest(form) }}
 
     <script>
