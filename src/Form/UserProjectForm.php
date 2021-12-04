@@ -65,7 +65,7 @@ class UserProjectForm extends AbstractType
 
         if (isset($id)) {
             $builder->add('save', SubmitType::class, [
-                    'label' => 'Продолжить',
+                    'label' => 'Выполнено',
                     'attr' => [
                         'class' => 'btn btn-success btn-lg',
                         'style' => 'display:block; margin:auto',

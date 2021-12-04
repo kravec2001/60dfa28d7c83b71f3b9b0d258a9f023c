@@ -42,7 +42,7 @@ class MapController extends AbstractController
 
         $query = $em->createQuery(
             'SELECT e.id, e.typEvent, e.event as eventfull, e.eventHyperlink link,
-                    substring(e.event,0,15) as event, p.status, t.name
+                    substring(e.event,0,15) as event, p.status, t.name, 
                FROM App\Entity\PsbEvents e,  
                     App\Entity\PsbEventsPers p,
                     App\Entity\PsbEventsTypes t
