@@ -107,7 +107,6 @@ class AdminController extends AbstractController
                 AND t.id = e.typEvent
                 AND u.id = p.idUser
                 AND e.doBoss = 1 
-                AND (u.dateStart + e.beginDaysAfter) + 3 = current_date()                
                 order by u.dateStart + e.beginDaysAfter 
                ');
         $events = $query->getResult();

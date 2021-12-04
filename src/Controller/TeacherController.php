@@ -207,7 +207,6 @@ class TeacherController extends AbstractController
                 AND t.id = e.typEvent
                 AND u.id = p.idUser
                 AND e.doMentor = 1
-                AND (u.dateStart + e.beginDaysAfter) - 1  = current_date()       
                 order by u.dateStart + e.beginDaysAfter                  
                ');
         $events = $query->getResult();
