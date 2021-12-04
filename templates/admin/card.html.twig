@@ -44,7 +44,7 @@
             </div>
         </div>
         {% endfor %}
-
+        <form>
         <div class="nav-tabs-custom">
             <p class="titlepost">Ближайшие события</p>
             <div class="tab-content">
@@ -65,9 +65,8 @@
                                     <div class="timeline-item">
                                         <div class="timeline-body">
                                             <span class="dayNumber">
-                                                 {% if evn.status == 1 %}
-                                                     <img src="/img/icon/check.png" style="width:24px; float:right;">
-                                                 {% endif %}
+                                                <input type="checkbox" {% if evn.status == 1 %} checked {% endif %}>
+                                                {#<img src="/img/icon/check.png" style="width:24px; float:right;">#}
                                             </span>
                                             <div class="timeline-description">{{ evn.event }}</div>
                                         </div>
@@ -83,4 +82,5 @@
             </div>
         </div>
     </div>
+    </form>
 {% endblock %}
