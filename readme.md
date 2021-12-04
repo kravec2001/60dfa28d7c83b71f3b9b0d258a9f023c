@@ -1,8 +1,14 @@
+## Реализованная функциональность
+
+Web-портал
+Telegram bot
+
 ## Основной стек технологий
 
 Postgresql 12
 Symfony
 PHP 7.4 + Composer
+Telegram API
 
 ## Демо
 
