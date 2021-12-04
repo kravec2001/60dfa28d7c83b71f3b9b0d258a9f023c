@@ -26,21 +26,25 @@
             </a>
         </div>
 
-        {% if app.user %}
-            {% set img = app.user.psbUser.img %}
-            {% set fio = app.user.psbUser.fio %}
-            {% set post = app.user.psbUser.post.name %}
-            {% set depart = app.user.psbUser.depart.name %}
-        {% else %}
-            {% set img = '' %}
-            {% set fio = 'Незаполнено' %}
-            {% set post = 'Незаполнено' %}
-            {% set depart = 'Незаполнено' %}
-        {% endif %}
-{#        {% include 'inc/username.html.twig' %}#}
+        {% if app.user.roles[0] == 'ROLE_USER' %}
+            {% if app.user %}
+                {% set img = app.user.psbUser.img %}
+                {% set fio = app.user.psbUser.fio %}
+                {% set post = app.user.psbUser.post.name %}
+                {% set depart = app.user.psbUser.depart.name %}
+                {% set bonus = app.user.psbUser.bonus %}
+            {% else %}
+                {% set img = '' %}
+                {% set fio = 'Незаполнено' %}
+                {% set post = 'Незаполнено' %}
+                {% set depart = 'Незаполнено' %}
+            {% endif %}
+            {% include 'inc/username.html.twig' %}
 
-         <div class="col-auto d-flex justify-content-end align-items-center">
-            <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_logout') }}">Выйти</a>
-        </div>
+        {% else %}
+            <div class="col-auto d-flex justify-content-end align-items-center">
+                <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_logout') }}">Выйти</a>
+            </div>
+        {% endif %}
     </div>
 </header>

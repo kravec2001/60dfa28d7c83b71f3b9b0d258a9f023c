@@ -1,0 +1,16 @@
+<div class="p-1">
+    <div class="d-flex align-items-start">
+        <div class="image p-0">
+            <img src="/img/users/{{ img }}" height="40px"/>
+        </div>
+        <div class="mb-1 mt-1 form-label-title-blue">
+            {#<a href="{{ path('user_card') }}" class="blog-header-logo d-flex align-items-center text-decoration-none text-first">{{ fio }}</a>#}
+            <a class="blog-header-logo d-flex align-items-center text-decoration-none text-first"
+               style="font-size: 20px; color: #FA4616"><b>{{ bonus }} </b> баллов</a>
+        </div>
+
+        <div class="mb-1 mt-1 ml-3 mr-3 ">
+            <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_logout') }}">Выйти</a>
+        </div>
+    </div>
+</div>
