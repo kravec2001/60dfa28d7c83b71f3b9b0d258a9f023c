@@ -1,0 +1,146 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+
+    <style>
+        #usl-fields-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #usl-fields-list li {
+            position: relative;
+        }
+
+        #usl-fields-list li > div {
+            margin-left: 20px;
+        }
+
+        #usl-fields-list li > button.close-button {
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+    </style>
+
+    {{ form_start(form) }}
+
+    <div class="form-group">
+        {{ form_errors(form.fio) }}
+        {{ form_label(form.fio) }}
+        {{ form_widget(form.fio) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_errors(form.profileId) }}
+        {{ form_label(form.profileId) }}
+        {{ form_widget(form.profileId) }}
+    </div>
+
+    <div class="row">
+        {% if form.usl is defined and form.usl %}
+            <div class="col-md-6">
+                <h5>Список событий индивидуального плана адаптации</h5>
+                <ul id="usl-fields-list" style="list-style: none"
+                    data-prototype="{{ form_widget(form.usl.vars.prototype)|e }}"
+                    data-widget-counter="{{ form.usl|length }}">
+                    {% for uslField in form.usl %}
+                        <li class="form-group">
+                            {{ form_errors(uslField) }}
+                            {{ form_widget(uslField) }}
+                        </li>
+                    {% endfor %}
+                </ul>
+                <button type="button" class="btn btn-first add_item_link" style="margin: auto;display: block;"
+                        data-list-selector="#usl-fields-list">Добавить событие
+                </button>
+            </div>
+        {% endif %}
+    </div>
+
+    <br><br><br>
+    {% if form.usl is defined and form.usl %}
+        {# <div class="col-md-2 text-right">
+        <a href="{{ path('teacher') }}" type="button"
+           class="btn btn-first" style="margin-left: auto;display: block;">Сохранить</a>
+    </div> #}
+        <button type="button" class="btn btn-first" data-toggle="modal" data-target="#setProfModal"
+                style="margin: auto;display: block;">Сохранить
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="setProfModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Назначение профиля произведено</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{{ path('teacher') }}" type="button"
+                           class="btn btn-outline-secondary" style="margin-left: auto;display: block;">Ок</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        {# <div class="col-md-2 text-right">
+            <a href="{{ path('teacher_add_profile') }}" type="button"
+               class="btn btn-outline-secondary disabled"  style="margin-left: auto;display: block;">Сохранить</a>
+        </div> #}
+        <a href="{{ path('teacher') }}" type="button" class="btn btn-outline-secondary disabled col-md-2"
+           style="margin: auto;display: block;">Сохранить
+        </a>
+    {% endif %}
+
+    {{ form_rest(form) }}
+
+    <script>
+        jQuery(document).ready(function () {
+            var $uslCollectionHolder = $('ul#usl-fields-list');
+            $uslCollectionHolder.data('index', $uslCollectionHolder.find('li').length);
+            $uslCollectionHolder.find('li').each(function () {
+                addFormDeleteLink($(this));
+            });
+
+            $('body').on('click', '.add_item_link', function (e) {
+                var $collectionHolderClass = $(e.currentTarget).data('list-selector');
+                addFormToCollection($collectionHolderClass);
+            })
+        });
+
+        function addFormToCollection($collectionHolderClass) {
+            var $collectionHolder = $($collectionHolderClass);
+            var prototype = $collectionHolder.data('prototype');
+            var index = $collectionHolder.data('index');
+            var newForm = prototype;
+
+            newForm = newForm.replace(/__name__/g, index);
+            $collectionHolder.data('index', index + 1);
+
+            var $newFormLi = $('<li class="form-group"></li>').append(newForm);
+            $collectionHolder.append($newFormLi)
+
+            addFormDeleteLink($newFormLi);
+            updateSelectPicker();
+        }
+
+        function addFormDeleteLink($tagFormLi) {
+            var $removeFormButton = $('<button type="button" class="close close-button" aria-label="Close"><span aria-hidden="true">×</span></button>');
+            $tagFormLi.prepend($removeFormButton);
+
+            $removeFormButton.on('click', function (e) {
+                $tagFormLi.remove();
+            });
+        }
+
+        function updateSelectPicker() {
+            $('.selectpicker').selectpicker({
+                liveSearch: true,
+            });
+        }
+
+    </script>
+{% endblock %}

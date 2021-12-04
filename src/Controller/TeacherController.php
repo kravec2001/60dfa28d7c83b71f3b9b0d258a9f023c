@@ -9,6 +9,7 @@ use App\Entity\PsbUser;
 use App\Entity\Role;
 use App\Form\AddProfileForm;
 use App\Form\ProfileForm;
+use App\Form\SetProfileForm;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -226,5 +227,62 @@ class TeacherController extends AbstractController
             'events' => $events,
         ]);
     }
+
+    /**
+     * @Route("/teacher/setprofile", name="teacher_set_profile")
+     */
+    public function newSetAction(Request $request): Response
+    {
+        $this->denyAccessUnlessGranted(Role::TEACHER);
+
+        $formData = $request->get(SetProfileForm::NAME);
+        unset($formData['_token']);
+
+        $desc = "";
+        $users = [];
+
+        if (!isset($formData['profileId'])) {
+            $formData['profileId'] = null;
+            $formData['usl'] = [];
+        } else if (isset($formData['profileId'])) {
+            $last = $request->getSession()->get('profileId', -1);
+            $request->getSession()->save();
+            $formData['usl'] = [];
+
+            $dataset = $this->getDoctrine()->getRepository(PsbEventsProfile::class)->findBy([
+                'idProfile' => $formData['profileId']
+            ]);
+
+            foreach ($dataset as $item) {
+                $formData['usl'][] = [
+                    'profileId' => $item->getidProfile() . "",
+                    'idEvents' => $item->getidEvents() . "",
+                ];
+            }
+        }
+
+        $request->request->set(SetProfileForm::NAME, $formData);
+
+        $newProfileForm = $this->createForm(SetProfileForm::class, $formData, [
+            'em' => $this->getDoctrine()->getManager(),
+        ]);
+
+        $newProfileForm->handleRequest($request);
+
+        return $this->render('teacher/setprofile.html.twig', [
+            'title' => 'Назначение плана сотруднику',
+            'form' => $newProfileForm->createView(),
+            'breadcrumbs' => [
+                [
+                    'url' => $this->generateUrl('teacher'),
+                    'name' => 'Кабинет наставника',
+                ],
+                [
+                    'name' => 'Назначение плана сотруднику',
+                ],
+            ],
+        ]);
+    }
+
 
 }
